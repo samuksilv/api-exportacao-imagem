@@ -159,7 +159,7 @@ namespace ExporterImage.Controllers
                         },
                     });
 
-                    string filePath = $"Output/{DateTime.Now.ToString("yyyyMMddhhmmss")}.jpg";
+                    string filePath = $"Output/{DateTime.Now.ToString("yyyyMMddhhmmss")}.{tipoExportacao}";
                     string filePathHtml = $"Output/{DateTime.Now.ToString("yyyyMMddhhmmss")}.html";
 
                     Task taskImg = page.ScreenshotAsync(filePath,
