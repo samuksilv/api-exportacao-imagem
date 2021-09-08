@@ -63,7 +63,7 @@ namespace ExporterImage.Controllers
                 Headers = headers.Select(header => new TemplateHeader { Name = header }).ToList(),
             };
 
-            for (int i = 0; i < 1800; i++)
+            for (int i = 0; i < 1500; i++)
             {
                 var data = new TemplateData
                 {
@@ -156,14 +156,14 @@ namespace ExporterImage.Controllers
                         },
                     });
 
-                    string filePath = $"Output/{DateTime.Now.ToString("yyyyMMddhhmmss")}.{tipoExportacao}";
+                    string filePath = $"Output/{DateTime.Now.ToString("yyyyMMddhhmmss")}.jpg";
                     string filePathHtml = $"Output/{DateTime.Now.ToString("yyyyMMddhhmmss")}.html";
 
                     Task taskImg = page.ScreenshotAsync(filePath,
                         new ScreenshotOptions
                         {
                             Type = tipoExportacao,
-                            Quality = tipoExportacao == ScreenshotType.Jpeg ? 100 : null,
+                            Quality = tipoExportacao == ScreenshotType.Jpeg ? 50 : null,
                             FullPage = true,
                         });
 
