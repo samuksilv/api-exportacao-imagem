@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace exporterImage.Models
@@ -5,6 +6,10 @@ namespace exporterImage.Models
     public class Template
     {
         public string Titulo { get; set; }
+        public string UrlLogo { get; set; }
+        public string TituloCabecalho { get; set; }
+        public DateTime? DataGeracao { get; set; }
+        public string DataGeracaoTexto => DataGeracao?.ToString("dd/MM/yyyy HH:mm:ss");
         public List<TemplateHeader> Headers { get; set; }
         public List<TemplateData> Data { get; set; }
     }

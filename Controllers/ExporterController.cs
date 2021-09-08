@@ -59,6 +59,9 @@ namespace ExporterImage.Controllers
             Template template = new Template
             {
                 Titulo = "Algum Título Qualquer - apenas mais um teste",
+                DataGeracao = DateTime.Now,
+                UrlLogo = "https://cdn-0.imagensemoldes.com.br/wp-content/uploads/2020/04/Whatsapp-PNG.png",
+                TituloCabecalho = "Título cabeçalho",
                 Data = new List<TemplateData>(),
                 Headers = headers.Select(header => new TemplateHeader { Name = header }).ToList(),
             };
@@ -181,30 +184,5 @@ namespace ExporterImage.Controllers
 
         }
 
-
-        [HttpGet("test")]
-        public async Task<IActionResult> Teste2()
-        {
-            var converter = new HtmlConverter();
-            string templateHtml = GenerateTemplateHtml();
-
-            string filePath = $"Output/{DateTime.Now.ToString("yyyyMMddhhmmss")}.png";
-            // string filePath = $"Output/{DateTime.Now.ToString("yyyyMMddhhmmss")}.jpg";
-            string filePathHtml = $"Output/{DateTime.Now.ToString("yyyyMMddhhmmss")}.html";
-
-            var bytes = converter.FromHtmlString(templateHtml, 1024, ImageFormat.Png, 100);
-            // var bytes = converter.FromHtmlString(templateHtml);
-
-            Task taskImg = System.IO.File.WriteAllBytesAsync(filePath, bytes);
-            Task taskHtml = System.IO.File.WriteAllTextAsync(filePathHtml, templateHtml);
-
-            await Task.WhenAll(taskImg, taskHtml);
-
-            return Ok(new
-            {
-                templateHtml = new FileInfo(filePathHtml).FullName,
-                imagem = new FileInfo(filePath).FullName,
-            });
-        }
     }
 }
