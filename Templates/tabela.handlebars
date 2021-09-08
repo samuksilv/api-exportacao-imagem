@@ -1,0 +1,19 @@
+<table>
+    <thead>
+        <tr>
+            {{#each Headers}}
+                <th>{{Name}}</th>
+            {{/each}}
+        </tr>
+    </thead>
+    <tbody>
+        {{#each Data}}
+            <tr>
+                {{#each Properties}}
+                    <td>{{Value}}</td>
+                {{/each}}
+            </tr>
+        {{/each}}
+    </tbody>
+
+</table>
